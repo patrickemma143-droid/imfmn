@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - index.html
-      - .github/workflows/deploy.yml
   workflow_dispatch:
 
 permissions:
@@ -24,10 +21,34 @@ jobs:
       - name: Check out the website
         uses: actions/checkout@v6
 
+      - name: Check FTP settings and server address
+        env:
+          FTP_SERVER: ${{ secrets.GODADDY_FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.GODADDY_FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.GODADDY_FTP_PASSWORD }}
+        run: |
+          set -eu
+          if [ -z "$FTP_SERVER" ]; then
+            echo "GODADDY_FTP_SERVER is missing. Add the exact GoDaddy hosting IP address or FTP hostname as a repository secret."
+            exit 1
+          fi
+          if [ -z "$FTP_USERNAME" ]; then
+            echo "GODADDY_FTP_USERNAME is missing. Add your FTP account username as a repository secret."
+            exit 1
+          fi
+          if [ -z "$FTP_PASSWORD" ]; then
+            echo "GODADDY_FTP_PASSWORD is missing. Add your FTP account password as a repository secret."
+            exit 1
+          fi
+          if ! getent ahosts "$FTP_SERVER" >/dev/null; then
+            echo "GODADDY_FTP_SERVER does not resolve. Set it to the hosting IP address or FTP hostname shown in GoDaddy/cPanel. Do not include ftp:// or a port."
+            exit 1
+          fi
+          echo "FTP settings are present and the server address resolves."
+
       - name: Deploy over explicit FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-
           server: ${{ secrets.GODADDY_FTP_SERVER }}
           username: ${{ secrets.GODADDY_FTP_USERNAME }}
           password: ${{ secrets.GODADDY_FTP_PASSWORD }}
@@ -40,5 +61,4 @@ jobs:
           exclude: |
             **/.git*/**
             **/.github/**
-            **/assets/**
             **/README*
