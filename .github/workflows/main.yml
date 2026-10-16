@@ -1,0 +1,43 @@
+name: Deploy website to GoDaddy
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - index.html
+      - .github/workflows/deploy.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: godaddy-ftps-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Publish standalone site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the website
+        uses: actions/checkout@v6
+
+      - name: Deploy over explicit FTPS
+        uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+        with:
+          server: ftp.geopix256.com
+          username: imfmn@geopix256.com
+          password: ${{ secrets.GODADDY_FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          local-dir: ./
+          server-dir: ./
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*/**
+            **/.github/**
+            **/assets/**
+            **/README*
