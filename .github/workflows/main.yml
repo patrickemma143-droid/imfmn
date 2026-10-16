@@ -27,8 +27,9 @@ jobs:
       - name: Deploy over explicit FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.4.0
         with:
-          server: geopix256.com
-          username: imfmn@geopix256.com
+
+          server: ${{ secrets.GODADDY_FTP_SERVER }}
+          username: ${{ secrets.GODADDY_FTP_USERNAME }}
           password: ${{ secrets.GODADDY_FTP_PASSWORD }}
           protocol: ftps
           port: 21
