@@ -344,3 +344,9 @@
 
 /* Missions ministry photo hero */
 .missions-hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:390px;overflow:hidden;padding:55px 0}.missions-hero-image{position:absolute;z-index:-1;inset-block:0;right:0;width:56%;height:100%;object-fit:cover;object-position:center 18%}.missions-hero-overlay{position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,#18324a 0%,#18324a 37%,rgba(24,50,74,.94) 47%,rgba(24,50,74,.48) 70%,rgba(24,50,74,.2) 100%)}.missions-hero-content{position:relative;z-index:1}.missions-hero-content h1,.missions-hero-content p{max-width:620px}@media(max-width:760px){.missions-hero{min-height:560px;align-items:flex-end;padding:0 0 50px}.missions-hero-image{width:100%;object-position:center 14%}.missions-hero-overlay{background:linear-gradient(0deg,#18324a 0%,rgba(24,50,74,.96) 34%,rgba(24,50,74,.44) 68%,rgba(24,50,74,.08) 100%)}.missions-hero-content h1,.missions-hero-content p{max-width:100%}}
+
+/* Keep homepage ministry card photos on a shared horizontal line */
+.ministry-list{align-items:stretch}
+.ministry-list .ministry-image{height:190px;aspect-ratio:auto;overflow:hidden;flex:0 0 190px}
+@media(max-width:760px){.ministry-list .ministry-image{height:175px;flex-basis:175px}}
+@media(max-width:460px){.ministry-list .ministry-image{height:205px;flex-basis:205px}}
