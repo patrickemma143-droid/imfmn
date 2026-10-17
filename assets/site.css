@@ -43,7 +43,7 @@
     .sermon-actions{display:flex;justify-content:center;align-items:center;gap:24px;margin:26px 0 0}
     .sermon-actions .button{border-radius:999px}
     @media(max-width:460px){.sermon-actions{flex-direction:column;gap:14px}}
-    .daily-devotion{background:#fff}
+    .daily-devotion{position:relative;isolation:isolate;overflow:hidden;background:#f7f3ec}.daily-devotion:before,.daily-devotion:after{content:"";position:absolute;z-index:-1;inset:-14px;pointer-events:none}.daily-devotion:before{background:url("bible-devotion-background.webp") center/cover no-repeat;filter:blur(12px);transform:scale(1.04)}.daily-devotion:after{inset:0;background:rgba(247,243,236,.7)}.daily-devotion>.wrap{position:relative;z-index:1}
     .devotion-heading{max-width:760px;margin:0 auto 34px;text-align:center}
     .devotion-heading .section-intro{margin:0 auto}
     .devotion-card{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(280px,.7fr);max-width:1040px;margin-inline:auto;overflow:hidden;border:1px solid var(--line);border-radius:22px;background:var(--ivory);box-shadow:var(--shadow)}
