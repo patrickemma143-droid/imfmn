@@ -208,3 +208,19 @@
     .expect-actions{display:flex;flex-wrap:wrap;gap:12px}
     .expect-actions .button{border-radius:999px;white-space:nowrap}
     @media(max-width:760px){.expect-grid{grid-template-columns:1fr}.expect-next{align-items:flex-start;flex-direction:column}.expect-actions{width:100%;flex-direction:column}.expect-actions .button{width:100%}}
+    .ministry-page{max-width:1080px}
+    .ministry-intro{max-width:840px;margin:0 auto 32px;text-align:center}
+    .ministry-intro h2{margin:0 0 14px;font:600 clamp(32px,4vw,44px)/1.12 var(--serif);color:var(--navy)}
+    .ministry-intro>p:last-child{margin:0;color:var(--slate);font-size:18px;line-height:1.75}
+    .ministry-focus-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .ministry-focus-card{padding:25px;background:#fff;border:1px solid var(--line);border-top:4px solid var(--orange);border-radius:16px;box-shadow:0 8px 24px rgba(21,57,79,.05)}
+    .ministry-focus-card .ministry-index{display:block;margin-bottom:12px;color:var(--burgundy);font-size:12px;font-weight:700;letter-spacing:.13em;text-transform:uppercase}
+    .ministry-focus-card h3{margin:0 0 9px;font:600 24px/1.18 var(--serif);color:var(--navy)}
+    .ministry-focus-card p{margin:0;color:var(--slate);line-height:1.65}
+    .ministry-next{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:24px;padding:28px 32px;border-radius:18px;background:var(--navy);color:#fff}
+    .ministry-next h2{margin:0 0 7px;color:#fff;font:600 28px/1.2 var(--serif)}
+    .ministry-next p{margin:0;color:#e8e5df}
+    .ministry-next .button{border-radius:999px;white-space:nowrap}
+    .ministry-detail-note{margin-top:18px;padding:20px 24px;background:#f2e8dc;border-radius:14px;color:var(--slate)}
+    .ministry-detail-note p{margin:0}
+    @media(max-width:760px){.ministry-focus-grid{grid-template-columns:1fr}.ministry-focus-card{padding:22px}.ministry-next{align-items:flex-start;flex-direction:column;padding:25px}.ministry-next .button{width:100%;text-align:center}}
