@@ -167,3 +167,28 @@
     .form-status{min-height:1.5em;margin:12px 0 0;color:var(--burgundy);font-weight:700}
     @media(max-width:760px){.new-here-info-grid,.new-here-next-grid,.newcomer-form-section{grid-template-columns:1fr}.newcomer-form-section{gap:18px;margin-top:42px}.newcomer-form-heading h2{font-size:32px}}
     @media(max-width:460px){.form-fields{grid-template-columns:1fr}.form-field-wide{grid-column:auto}.new-here-actions{align-items:flex-start;flex-direction:column}}
+    .visit-page{max-width:1080px}
+    .visit-welcome{max-width:830px;margin:0 auto 36px;text-align:center}
+    .visit-welcome h2,.visit-section-heading h2,.visit-help h2{margin:0 0 12px;font:600 clamp(32px,4vw,44px)/1.12 var(--serif);color:var(--navy)}
+    .visit-welcome>p:last-child{margin:0;color:var(--slate);font-size:18px}
+    .visit-service-card{display:flex;justify-content:space-between;align-items:center;gap:28px;padding:clamp(28px,5vw,44px);border-radius:20px;background:var(--navy);color:#fff;box-shadow:var(--shadow)}
+    .visit-service-card .about-label{color:#f4c96c}
+    .visit-service-card h2{margin:0 0 8px;font:600 32px/1.15 var(--serif)}
+    .visit-service-card .visit-time{margin:0 0 10px;color:#f4c96c;font-size:23px;font-weight:700}
+    .visit-service-card address{color:#e8e5df;font-style:normal;line-height:1.6}
+    .visit-service-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .visit-service-actions .button{border-radius:999px}
+    .visit-faq{padding-top:58px}
+    .visit-section-heading{margin-bottom:22px}
+    .visit-section-heading h2{margin-bottom:0}
+    .visit-faq-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .visit-faq-grid article{padding:26px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 24px rgba(21,57,79,.05)}
+    .visit-faq-mark{color:var(--burgundy);font-size:12px;font-weight:700;letter-spacing:.12em}
+    .visit-faq-grid h3{margin:8px 0;font:600 25px/1.18 var(--serif);color:var(--navy)}
+    .visit-faq-grid p{margin:0;color:var(--slate)}
+    .visit-help{display:flex;justify-content:space-between;align-items:center;gap:24px;margin-top:28px;padding:30px 34px;border-radius:16px;background:#f2e8dc}
+    .visit-help .sermon-kicker{margin-bottom:6px}
+    .visit-help h2{font-size:28px;margin-bottom:8px}
+    .visit-help>div>p:last-child{margin:0;color:var(--slate)}
+    .visit-help .button{border-radius:999px;white-space:nowrap}
+    @media(max-width:760px){.visit-service-card,.visit-help{align-items:flex-start;flex-direction:column}.visit-faq-grid{grid-template-columns:1fr}.visit-service-actions{width:100%;flex-direction:column}.visit-service-actions .button{width:100%}}
