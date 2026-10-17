@@ -4,6 +4,73 @@
   const year = document.querySelector('#year');
   const newcomerForm = document.querySelector('#newcomer-form');
   if (year) year.textContent = new Date().getFullYear();
+  const heroCarousel = document.querySelector('[data-hero-carousel]');
+  if (heroCarousel) {
+    const hero = heroCarousel.closest('.home-hero');
+    const slides = Array.from(heroCarousel.querySelectorAll('.hero-slide'));
+    const dots = Array.from(hero.querySelectorAll('[data-hero-dot]'));
+    const previous = hero.querySelector('[data-hero-prev]');
+    const next = hero.querySelector('[data-hero-next]');
+    const togglePlayback = hero.querySelector('[data-hero-toggle]');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let activeIndex = 0;
+    let manuallyPaused = reducedMotion.matches;
+    let pointerInside = false;
+    let focusInside = false;
+    let timer = null;
+
+    const stopTimer = () => {
+      if (timer !== null) window.clearInterval(timer);
+      timer = null;
+    };
+    const syncTimer = () => {
+      stopTimer();
+      if (!manuallyPaused && !pointerInside && !focusInside && !document.hidden) {
+        timer = window.setInterval(() => showSlide(activeIndex + 1), 7000);
+      }
+    };
+    const showSlide = index => {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach((slide, slideIndex) => {
+        const isActive = slideIndex === activeIndex;
+        slide.classList.toggle('is-active', isActive);
+        slide.setAttribute('aria-hidden', String(!isActive));
+      });
+      dots.forEach((dot, dotIndex) => {
+        const isActive = dotIndex === activeIndex;
+        dot.classList.toggle('is-active', isActive);
+        if (isActive) dot.setAttribute('aria-current', 'true');
+        else dot.removeAttribute('aria-current');
+      });
+      syncTimer();
+    };
+    const setPaused = paused => {
+      manuallyPaused = paused;
+      togglePlayback.dataset.paused = String(paused);
+      togglePlayback.setAttribute('aria-label', paused ? 'Resume slideshow' : 'Pause slideshow');
+      syncTimer();
+    };
+
+    previous.addEventListener('click', () => showSlide(activeIndex - 1));
+    next.addEventListener('click', () => showSlide(activeIndex + 1));
+    dots.forEach((dot, dotIndex) => dot.addEventListener('click', () => showSlide(dotIndex)));
+    togglePlayback.addEventListener('click', () => {
+      focusInside = false;
+      setPaused(!manuallyPaused);
+    });
+    hero.addEventListener('pointerenter', () => { pointerInside = true; syncTimer(); });
+    hero.addEventListener('pointerleave', () => { pointerInside = false; syncTimer(); });
+    hero.addEventListener('focusin', () => { focusInside = true; syncTimer(); });
+    hero.addEventListener('focusout', () => window.setTimeout(() => {
+      focusInside = hero.contains(document.activeElement);
+      syncTimer();
+    }, 0));
+    document.addEventListener('visibilitychange', syncTimer);
+    reducedMotion.addEventListener('change', event => {
+      if (event.matches) setPaused(true);
+    });
+    setPaused(manuallyPaused);
+  }
   if (newcomerForm) {
     newcomerForm.addEventListener('submit', event => {
       event.preventDefault();
