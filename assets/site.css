@@ -322,3 +322,10 @@
     .hero-dot.is-active{width:24px;border-color:#f4c96c;border-radius:999px;background:#f4c96c}
     @media(max-width:760px){.home-hero .hero-inner{padding-block:70px 112px}.home-hero .hero-controls{right:18px;bottom:22px}.home-hero .hero-shade{background:linear-gradient(90deg,rgba(16,38,56,.78),rgba(16,38,56,.52))}}
     @media(prefers-reduced-motion:reduce){.home-hero .hero-slide,.hero-control,.hero-dot{transition:none}}
+    .ministry-image img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%}
+    .mens-hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:390px;overflow:hidden;padding:55px 0}
+    .mens-hero-image{position:absolute;z-index:-1;inset-block:0;right:0;width:56%;height:100%;object-fit:cover;object-position:center 18%}
+    .mens-hero-overlay{position:absolute;z-index:0;inset:0;background:linear-gradient(90deg,#18324a 0%,#18324a 37%,rgba(24,50,74,.94) 47%,rgba(24,50,74,.48) 70%,rgba(24,50,74,.2) 100%)}
+    .mens-hero-content{position:relative;z-index:1}
+    .mens-hero-content h1,.mens-hero-content p{max-width:620px}
+    @media(max-width:760px){.mens-hero{min-height:560px;align-items:flex-end;padding:0 0 50px}.mens-hero-image{width:100%;object-position:center 18%}.mens-hero-overlay{background:linear-gradient(0deg,#18324a 0%,rgba(24,50,74,.96) 34%,rgba(24,50,74,.44) 68%,rgba(24,50,74,.08) 100%)}.mens-hero-content h1,.mens-hero-content p{max-width:100%}}
